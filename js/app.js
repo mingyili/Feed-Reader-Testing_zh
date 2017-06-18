@@ -76,9 +76,11 @@ function init() {
      });
  }
 
-/* Google API: 加载 Feed Reader API 和定义当加载结束之后调用什么函数。*/
-google.load('feeds', '1');
-google.setOnLoadCallback(init);
+/* Google API: 加载 Feed Reader API 和定义当加载结束之后调用什么函数。 google api 未加载成功跳过，这样以后的测试也可进行*/
+if (typeof google !== 'undefined') {
+    google.load('feeds', '1');
+    google.setOnLoadCallback(init);
+}
 
 /* 所有的这些功能都严重依赖 DOM 。所以把我们的代码放在 $ 函数里面以保证在 DOM
  * 构建完毕之前它不会被执行。

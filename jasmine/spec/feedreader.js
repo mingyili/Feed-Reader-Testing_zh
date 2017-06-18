@@ -8,51 +8,14 @@
  */
 $(function() {
     /**
-     * 测试 google API 是否加载成功
+     * 测试 google API 是否加载成功。
      */
     describe('Google API', function() {
         it('goole defined', function() {
             expect(google).toBeDefined();
         });
     });
-    /* 这是我们第一个测试用例 - 其中包含了一定数量的测试。这个用例的测试
-     * 都是关于 Rss 源的定义的，也就是应用中的 allFeeds 变量。
-    */
-    describe('RSS Feeds', function() {
-        /* 这是我们的第一个测试 - 它用来保证 allFeeds 变量被定义了而且
-         * 不是空的。在你开始做这个项目剩下的工作之前最好实验一下这个测试
-         * 比如你把 app.js 里面的 allFeeds 变量变成一个空的数组然后刷新
-         * 页面看看会发生什么。
-        */
-        it('allFeeds defined', function() {
-            expect(allFeeds).toBeDefined();
-            expect(allFeeds.length).not.toBe(0);
-        });
 
-
-        /* TODO:
-         * 编写一个测试遍历 allFeeds 对象里面的所有的源来保证有链接字段而且链接不是空的。
-         */
-        it('all url defined', function() {
-            for (var i = 0; i < allFeeds.length; i++) {
-                expect(allFeeds[i].url).toBeDefined();
-                expect(typeof allFeeds[i].url).toBe('string');
-                expect($.trim(allFeeds[i].url)).not.toBe('');
-            }
-        });
-
-
-        /* TODO:
-         * 编写一个测试遍历 allFeeds 对象里面的所有的源来保证有名字字段而且不是空的。
-         */
-        it('all name defined', function() {
-            for (var i = 0; i < allFeeds.length; i++) {
-                expect(allFeeds[i].name).toBeDefined();
-                expect(typeof allFeeds[i].name).toBe('string');
-                expect($.trim(allFeeds[i].name)).not.toBe('');
-            }
-        });
-    });
     /* 这是我们第一个测试用例 - 其中包含了一定数量的测试。这个用例的测试
      * 都是关于 Rss 源的定义的，也就是应用中的 allFeeds 变量。
     */
@@ -135,7 +98,7 @@ $(function() {
             var menuIcon = $('.menu-icon-link');
             // 触发点击事件
             menuIcon.trigger('click');
-            // sideMenu 动画效果有0.2s的执行时间 这里需要等待动画完成
+            // sideMenu 动画效果有0.2s的执行时间 这里需要等待动画完成后再测试
             setTimeout(function() {
                 expect(isMenuShow()).toBeTruthy();
                 // 再次点击应该显示
@@ -143,11 +106,9 @@ $(function() {
                 setTimeout(function() {
                     expect(isMenuHidden()).toBeTruthy();
                     done();
-                }, 250);
-            }, 250);
+                }, 300);
+            }, 300);
         });
-
-
     });
 
     /* TODO: 写一个叫做 "Initial Entries" 的测试用例 */
